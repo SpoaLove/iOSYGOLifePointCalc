@@ -56,10 +56,10 @@ class ViewController: UIViewController {
         case "-"?:
             guard inputNumber.text!.count <= 18 else { return }
             setLP(lifePoint: currentPlayerLP.text!.toInt() - inputNumber.text!.toInt())
-        case "set"?:
+        case "Set"?:
             guard inputNumber.text!.count <= 18 else { return }
             setLP(lifePoint: inputNumber.text!.toInt())
-        case "half"?:
+        case "Half"?:
             setLP(lifePoint: currentPlayerLP.text!.toInt() / 2)
         default:
             return
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func rollDice(_ sender: UIButton) {
-        let tossResultMessage = String(6.generateRandomIntWith(lowerBound: 0))
+        let tossResultMessage = String(6.generateRandomIntWith(lowerBound: 1))
         let alert = UIAlertController(title: "Dice:", message: tossResultMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
