@@ -216,7 +216,7 @@
                                                             <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="resetButtonDidPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NwK-5C-ZmG"/>
+                                                            <action selector="reset" destination="BYZ-38-t0r" eventType="touchUpInside" id="DCi-To-Yoe"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
