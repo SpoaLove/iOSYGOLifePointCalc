@@ -69,9 +69,29 @@ class ViewController: UIViewController {
     @IBAction func resetButtonDidPressed(_ sender: UIButton) {
         reset()
     }
+    
+    
+    @IBAction func tossCoin(_ sender: UIButton) {
+        let tossResult = 1.generateRandomIntWith(lowerBound: 0)
+        let resultMessage = tossResult == 1 ? "Head" : "Tail"
+        let alert = UIAlertController(title: "Coin:", message: resultMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func rollDice(_ sender: UIButton) {
+        let tossResultMessage = String(6.generateRandomIntWith(lowerBound: 0))
+        let alert = UIAlertController(title: "Dice:", message: tossResultMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 
+}
 
-
+extension Int {
+    func generateRandomIntWith(lowerBound:Int)->Int{
+        return Int(arc4random_uniform(UInt32(self+1)) + UInt32(lowerBound))
+    }
 }
 
 extension String {

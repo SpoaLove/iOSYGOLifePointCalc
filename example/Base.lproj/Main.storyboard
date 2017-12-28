@@ -13,13 +13,13 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LifePointCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vjB-nL-WA1">
-                                <rect key="frame" x="10" y="238.5" width="355" height="191.5"/>
+                                <rect key="frame" x="10" y="223" width="355" height="221.5"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wtH-GA-5Eg">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="29"/>
@@ -171,6 +171,29 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="viH-oZ-NV7">
+                                        <rect key="frame" x="0.0" y="191.5" width="355" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKF-4Q-XnJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="30"/>
+                                                <state key="normal" title="Toss Coin">
+                                                    <color key="titleColor" red="0.57380741830000004" green="0.56553578380000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tossCoin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WMh-N0-R7D"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IX-zo-A5f">
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="30"/>
+                                                <state key="normal" title="Roll Dice">
+                                                    <color key="titleColor" red="0.57380741830000004" green="0.56553578380000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rollDice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lC7-aJ-QLh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cGi-Bg-n0a" secondAttribute="trailing" id="3aN-HO-L11"/>
@@ -181,10 +204,12 @@
                                     <constraint firstItem="KPs-zn-Cyh" firstAttribute="leading" secondItem="vjB-nL-WA1" secondAttribute="leading" id="cEK-ua-gyc"/>
                                     <constraint firstAttribute="trailing" secondItem="iuo-GK-MhE" secondAttribute="trailing" id="eYf-gh-7xQ"/>
                                     <constraint firstAttribute="trailing" secondItem="wtH-GA-5Eg" secondAttribute="trailing" id="rLd-pj-e42"/>
+                                    <constraint firstAttribute="trailing" secondItem="viH-oZ-NV7" secondAttribute="trailing" id="uYb-8a-fmr"/>
                                     <constraint firstItem="cGi-Bg-n0a" firstAttribute="leading" secondItem="vjB-nL-WA1" secondAttribute="leading" id="vWz-lm-G9v"/>
                                     <constraint firstItem="wtH-GA-5Eg" firstAttribute="leading" secondItem="vjB-nL-WA1" secondAttribute="leading" id="vXB-eW-Qdz"/>
                                     <constraint firstAttribute="trailing" secondItem="KPs-zn-Cyh" secondAttribute="trailing" id="xC8-GV-ANi"/>
                                     <constraint firstItem="iuo-GK-MhE" firstAttribute="leading" secondItem="vjB-nL-WA1" secondAttribute="leading" id="zLT-Ol-so2"/>
+                                    <constraint firstItem="viH-oZ-NV7" firstAttribute="leading" secondItem="vjB-nL-WA1" secondAttribute="leading" id="zR6-xe-kLh"/>
                                 </constraints>
                             </stackView>
                         </subviews>
