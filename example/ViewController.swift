@@ -9,34 +9,34 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     
     private var currentPlayer:Int = 1
     private var currentPlayerLP:UILabel! {
         return currentPlayer == 1 ? firstPlayerLP : secondPlayerLP
     }
     
-    @IBOutlet weak var firstPlayerLP: UILabel!
-    @IBOutlet weak var secondPlayerLP: UILabel!
-    @IBOutlet weak var inputNumber: UITextField!
+    @IBOutlet private weak var firstPlayerLP: UILabel!
+    @IBOutlet private weak var secondPlayerLP: UILabel!
+    @IBOutlet private weak var inputNumber: UITextField!
     
-
-    @IBAction func playerChanged(_ sender: UISegmentedControl) {
+    
+    @IBAction private func playerChanged(_ sender: UISegmentedControl) {
         currentPlayer = sender.selectedSegmentIndex+1
     }
     
-    func reset(){
+    private func reset(){
         let alert = UIAlertController(title: "Reset?", message: "Do you want to Reset?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (_) in
             self.firstPlayerLP.text = "8000"
             self.secondPlayerLP.text = "8000"
-            self.inputNumber.text = ""
+            self.inputNumber.text = nil
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
-    func setLP(lifePoint:Int){
+    private func setLP(lifePoint:Int){
         if lifePoint <= 0{
             currentPlayerLP.text = "0"
             print("End Game")
@@ -47,13 +47,24 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func operationButton(_ sender: UIButton) {
+    @IBAction private func operationButton(_ sender: UIButton) {
+        
+        
         switch sender.titleLabel!.text {
         case "+"?:
+            guard currentPlayerLP.text!.count <= 18 && inputNumber.text!.count <= 18 else {
+                return
+            }
             setLP(lifePoint: currentPlayerLP.text!.toInt() + inputNumber.text!.toInt())
         case "-"?:
+            guard inputNumber.text!.count <= 18 else {
+                return
+            }
             setLP(lifePoint: currentPlayerLP.text!.toInt() - inputNumber.text!.toInt())
         case "set"?:
+            guard inputNumber.text!.count <= 18 else {
+                return
+            }
             setLP(lifePoint: inputNumber.text!.toInt())
         case "half"?:
             setLP(lifePoint: currentPlayerLP.text!.toInt() / 2)
@@ -62,15 +73,15 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func numberButtonPressed(_ sender: UIButton) {
+    @IBAction private func numberButtonPressed(_ sender: UIButton) {
         inputNumber.text = String(describing: inputNumber.text!.toInt() + sender.titleLabel!.text!.toInt())
     }
     
-    @IBAction func clearInput(_ sender: UIButton) {
+    @IBAction private func clearInput(_ sender: UIButton) {
         inputNumber.text = nil
     }
     
-    @IBAction func resetButtonDidPressed(_ sender: UIButton) {
+    @IBAction private func resetButtonDidPressed(_ sender: UIButton) {
         reset()
     }
     
@@ -89,7 +100,7 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
 }
 
 extension Int {
