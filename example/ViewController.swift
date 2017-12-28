@@ -63,7 +63,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberButtonPressed(_ sender: UIButton) {
-        inputNumber.text = String(describing: sender.titleLabel!.text!.toInt())
+        inputNumber.text = String(describing: inputNumber.text!.toInt() + sender.titleLabel!.text!.toInt())
+    }
+    
+    @IBAction func clearInput(_ sender: UIButton) {
+        inputNumber.text = nil
     }
     
     @IBAction func resetButtonDidPressed(_ sender: UIButton) {
