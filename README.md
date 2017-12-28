@@ -1,0 +1,2 @@
+# iOSYGOLifePointCalc
+YGO utility app
