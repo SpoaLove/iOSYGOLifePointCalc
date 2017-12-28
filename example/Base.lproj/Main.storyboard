@@ -55,12 +55,17 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LIb-dF-cP9">
                                                 <rect key="frame" x="0.0" y="0.0" width="555" height="212"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuo-GK-MhE">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qkw-6j-V4k">
                                                         <rect key="frame" x="0.0" y="0.0" width="555" height="65.333333333333329"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iuo-GK-MhE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="555" height="65.333333333333329"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" returnKeyType="done"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cGi-Bg-n0a">
                                                         <rect key="frame" x="0.0" y="73.333333333333343" width="555" height="65.333333333333343"/>
                                                         <subviews>
@@ -290,7 +295,7 @@
                     </view>
                     <connections>
                         <outlet property="firstPlayerLP" destination="Zyr-Ih-obw" id="Pcv-b3-fOr"/>
-                        <outlet property="inputNumber" destination="iuo-GK-MhE" id="BfZ-iS-gXO"/>
+                        <outlet property="inputTextField" destination="iuo-GK-MhE" id="Dki-7d-hBX"/>
                         <outlet property="secondPlayerLP" destination="r8r-qc-b5P" id="cbd-TY-8nU"/>
                     </connections>
                 </viewController>

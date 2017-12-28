@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var firstPlayerLP: UILabel!
     @IBOutlet private weak var secondPlayerLP: UILabel!
-    @IBOutlet private weak var inputNumber: UITextField!
+    @IBOutlet private weak var inputTextField: UITextField!
     
     // Define currentPlayer
     private var currentPlayer:Int = 1
@@ -20,6 +20,12 @@ class ViewController: UIViewController {
         return currentPlayer == 1 ? firstPlayerLP : secondPlayerLP
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // add GestureRecognizer
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self, action:#selector(handleTap(sender:))))
+    }
     
     @IBAction private func playerChanged(_ sender: UISegmentedControl) {
         // set currentPlayer to the chosen segment
@@ -32,7 +38,7 @@ class ViewController: UIViewController {
             // reset status
             self.firstPlayerLP.text = "8000"
             self.secondPlayerLP.text = "8000"
-            self.inputNumber.text = nil
+            self.inputTextField.text = nil
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -51,14 +57,14 @@ class ViewController: UIViewController {
     @IBAction private func operationButton(_ sender: UIButton) {
         switch sender.titleLabel!.text {
         case "+"?:
-            guard currentPlayerLP.text!.count <= 18 && inputNumber.text!.count <= 18 else { return }
-            setLP(lifePoint: currentPlayerLP.text!.toInt() + inputNumber.text!.toInt())
+            guard currentPlayerLP.text!.count <= 18 && inputTextField.text!.count <= 18 else { return }
+            setLP(lifePoint: currentPlayerLP.text!.toInt() + inputTextField.text!.toInt())
         case "-"?:
-            guard inputNumber.text!.count <= 18 else { return }
-            setLP(lifePoint: currentPlayerLP.text!.toInt() - inputNumber.text!.toInt())
+            guard inputTextField.text!.count <= 18 else { return }
+            setLP(lifePoint: currentPlayerLP.text!.toInt() - inputTextField.text!.toInt())
         case "Set"?:
-            guard inputNumber.text!.count <= 18 else { return }
-            setLP(lifePoint: inputNumber.text!.toInt())
+            guard inputTextField.text!.count <= 18 else { return }
+            setLP(lifePoint: inputTextField.text!.toInt())
         case "Half"?:
             setLP(lifePoint: currentPlayerLP.text!.toInt() / 2)
         default:
@@ -66,15 +72,22 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc private func handleTap(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            inputTextField.resignFirstResponder()
+        }
+        sender.cancelsTouchesInView = false
+    }
+
     @IBAction private func numberButtonPressed(_ sender: UIButton) {
-        inputNumber.text = String(describing: inputNumber.text!.toInt() + sender.titleLabel!.text!.toInt())
+        inputTextField.text = String(describing: inputTextField.text!.toInt() + sender.titleLabel!.text!.toInt())
     }
     
     @IBAction private func clearInput(_ sender: UIButton) {
-        inputNumber.text = nil
+        inputTextField.text = nil
     }
     
-    @IBAction func tossCoin(_ sender: UIButton) {
+    @IBAction private func tossCoin(_ sender: UIButton) {
         let tossResult = 1.generateRandomIntWith(lowerBound: 0)
         let resultMessage = tossResult == 1 ? "Head" : "Tail"
         let alert = UIAlertController(title: "Coin:", message: resultMessage, preferredStyle: .alert)
@@ -82,14 +95,17 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func rollDice(_ sender: UIButton) {
+    @IBAction private func rollDice(_ sender: UIButton) {
         let tossResultMessage = String(6.generateRandomIntWith(lowerBound: 1))
         let alert = UIAlertController(title: "Dice:", message: tossResultMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
+
+    
 }
+
 
 extension Int {
     func generateRandomIntWith(lowerBound:Int)->Int{
