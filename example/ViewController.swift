@@ -66,7 +66,13 @@ class ViewController: UIViewController {
             guard inputTextField.text!.count <= 18 else { return }
             setLP(lifePoint: inputTextField.text!.toInt())
         case "Half"?:
-            setLP(lifePoint: currentPlayerLP.text!.toInt() / 2)
+            if currentPlayerLP.text!.toInt() != 1  {
+                setLP(lifePoint: currentPlayerLP.text!.toInt() / 2)
+            } else {
+                let alert = UIAlertController(title: "Warning", message: "You cannot half your LP when your LP is 1", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         default:
             return
         }
@@ -96,13 +102,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func rollDice(_ sender: UIButton) {
-        let tossResultMessage = String(6.generateRandomIntWith(lowerBound: 1))
-        let alert = UIAlertController(title: "Dice:", message: tossResultMessage, preferredStyle: .alert)
+        let rollResultMessage = String(6.generateRandomIntWith(lowerBound: 1))
+        let alert = UIAlertController(title: "Dice:", message: rollResultMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
 
+    @IBAction private func janken(_ sender: UIButton) {
+        let winner = 1.generateRandomIntWith(lowerBound: 0)
+        let resultMessage = winner == 1 ? "Player 1 Have Won" : "Player 2 Have Won"
+        let alert = UIAlertController(title: "Janken:", message: resultMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
 
